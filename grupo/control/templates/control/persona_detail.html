@@ -1,0 +1,36 @@
+{% extends "control/main_template.html" %}
+
+{% load static %}
+
+{% block title %}<title>Detalles</title>{% endblock %}
+
+{% block content %}
+
+<div class="section__content section__content--p30">
+    
+    <div class="col-md-12">
+        <h2>Detalle Persona</h2> 
+        <br>
+    </div>          
+
+    <div class="col-lg-6.offset-md-3">
+            <div class="card">
+                <div class="card-header">Detalles de la Persona</div>
+
+                <div class="card-body card-block">
+                    <p><strong>Nombre:</strong> {{ persona.nombre_persona }}</p> <!-- author detail link not yet defined -->
+                    <p><strong>Apellido:</strong> {{ persona.apellido }}</p>
+                    <p><strong>Edad:</strong> {{ persona.edad }}</p> 
+                    <p><strong>Comunidad:</strong> {{ persona.comunidad }} </p>  
+                </div>
+
+                <div class="card-footer">
+                    <a href="{% url 'control:personas' %}"><button type="button" class="btn btn-secondary btn-sm">Regresar</button></a>
+                </div>
+                    
+            </div>
+    </div>
+    
+    </div>
+
+{% endblock content %}

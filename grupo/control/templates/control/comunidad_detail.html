@@ -1,0 +1,44 @@
+{% extends "control/main_template.html" %}
+
+{% load static %}
+
+{% block title %}<title>Detalles</title>{% endblock %}
+
+{% block content %}
+
+    <div class="section__content section__content--p30"> 
+    
+        <div class="col-md-12">
+            <h2>Detalle Comunidad</h2> 
+            <br>
+        </div>          
+
+        <div class="col-lg-6.offset-md-3">
+                <div class="card">
+                    <div class="card-header">Detalle de la Comunidad</div>
+
+                    <div class="card-body card-block">
+                            <p><strong>Nombre:</strong> {{ comunidad.nombre_comunidad }}</p>
+                            <p><strong>Departamento:</strong> {{ comunidad.departamento }}</p>
+                            <p><strong>Municipio:</strong> {{ comunidad.municipio }}</p>    
+                    </div>
+
+                    <div style="margin-left:20px;margin-top:20px">
+                            <h4>Miembros</h4>
+                        
+                            {% for miembro in comunidad.persona_set.all %}
+                            <hr>                        
+                            <p><strong>Miembro:</strong> {{miembro.nombre_persona}}</p>
+                            
+                            {% endfor %}
+                        </div>
+
+                    <div class="card-footer">
+                        <a href="{% url 'control:comunidades' %}"><button type="button" class="btn btn-secondary btn-sm">Regresar</button></a>
+                    </div>
+                        
+                </div>
+        </div> 
+    </div>
+
+{% endblock content %}

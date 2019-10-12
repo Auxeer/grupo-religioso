@@ -1,0 +1,66 @@
+{% extends "control/main_template.html" %}
+
+{% load static %}
+
+{% block title %}<title>Listado</title>{% endblock %}
+
+{% block content %}
+
+    <div class="section__content section__content--p30">
+
+        <div class="col-md-12">
+                <h1>Actividades</h1> 
+                {% if perms.control.add_persona %}
+                <a href="{% url 'control:actividad_create' %}" class="pull-right"><button type="button" class="au-btn au-btn-icon au-btn--green au-btn--small pull-right">Agregar</button></a>
+                {% endif %}
+                <br><br>
+        </div>          
+
+        <div class="col-md-12">
+            <div class="table-responsive table--no-card m-b-30">
+                <table class="table table-borderless table-striped table-earning">
+
+                    <thead>
+                        <tr>
+                            <th>Nombre Actividad</th>
+                            <th>Descripcion</th>
+                            <th>Fecha</th>
+                            <th>Lugar</th>
+                            {% if user.is_authenticated %}
+                            <th style="text-align: center;">Accion</th>
+                            {% endif %} 
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% if actividad_list %}
+
+                            {% for actividad in actividad_list %}                     
+                                <tr>
+                                    <td>{{ actividad.nombre_actividad }}</td>
+                                    <td>{{ actividad.descripcion }}</td>
+                                    <td>{{ actividad.fecha }}</td>
+                                    <td>{{ actividad.lugar }}</td>
+
+                                    {% if user.is_authenticated %}
+                                    <td style="text-align: center;">
+                                        {% if perms.control.view_actividad %}<a href="{{ actividad.get_absolute_url }}"><img src="{% static 'images/icon/view.png' %}" width="25" height="25"/></a>{% endif %}  
+                                        {% if perms.control.change_actividad %}<a href="{% url 'control:actividad_update' actividad.id %}"><img src="{% static 'images/icon/update.png' %}" width="25" height="25"/></a>{% endif %}  
+                                        {% if perms.control.delete_actividad %}<a href="{% url 'control:actividad_delete' actividad.id %}"><img src="{% static 'images/icon/delete.png' %}" width="25" height="25"/></a>{% endif %}  
+                                    </td> 
+                                    {% endif %}                                 
+
+                                </tr>
+                            {% endfor %}                      
+                            
+                            {% endif %}   
+                    </tbody>
+                </table>     
+                        
+            </div>
+        </div>
+
+    </div>
+   
+{% endblock content %}

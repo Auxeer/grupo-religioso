@@ -1,0 +1,50 @@
+{% extends "control/main_template.html" %}
+
+{% load static %}
+
+{% block title %}<title>Agregar</title>{% endblock %}
+
+{% block content %}
+
+    <div class="section__content section__content--p30">
+
+        <div class="col-md-12">
+                <h1>Agregar Persona</h1> 
+            <br>
+        </div>          
+
+        <div class="col-lg-12">
+                <div class="card">
+                        <div class="card-header">
+                            <strong>Datos de la Persona</strong>
+                        </div>
+
+                    <div class="card-body card-block">
+                        <form action="" method="post" class="">
+                            <div class="form-group">
+                            {% csrf_token %}
+                                <div class="row form-group">
+                                        {% for field in form %}
+                                        <div class="col col-md-12">
+                                            <label for="" id="{{ field.id_for_label }}" class="form-control-label">{{ field.label_tag }}</label>
+                                            {{ field }} 
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            
+                                            <br>                                  
+                                        </div>
+                                        {% endfor %}
+                                </div>                                                                             
+                            </div>
+                    </div>
+                            <div class="card-footer">
+                                <a href="{% url 'control:personas' %}"><button type="button" class="btn btn-secondary btn-sm">Cancelar</button></a>
+                                <button type="submit" class="btn btn-success btn-sm pull-right">Agregar</button>
+                            </div>
+                        </form>
+                </div>
+        </div>     
+        
+    </div>
+   
+{% endblock content %}

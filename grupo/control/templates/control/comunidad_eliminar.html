@@ -1,0 +1,29 @@
+{% extends "control/main_template.html" %}
+
+{% load static %}
+
+{% block title %}<title>Eliminar</title>{% endblock %}
+
+{% block content %}
+
+    <div class="section__content section__content--p30">
+
+        <div class="col-md-12">
+                <h1>Eliminar</h1> 
+                <br>
+
+                <p>Estas seguro que deseas eliminar a la Comunidad: </p>
+                <strong>"{{ comunidad }}"</strong>
+                <br><br>
+
+                    <form action="" method="POST">
+                    {% csrf_token %}          
+                    <a href="{% url 'control:comunidades' %}"><button type="button" class="btn btn-secondary btn-sm">Cancelar</button></a> 
+                    <button type="submit" class="btn btn-success btn-sm">Confirmar</button>
+                    <br>
+                    </form>
+        </div>          
+   
+    </div>
+   
+{% endblock content %}

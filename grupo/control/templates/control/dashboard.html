@@ -1,0 +1,22 @@
+{% extends "control/main_template.html" %}
+
+{% load static %}
+
+{% block content %}
+    
+    <style>
+        .titulo h1 {
+                text-align: center;
+                }
+
+        .logo img {
+                display:block;
+                margin:auto;
+                }
+     </style>
+
+    <div class="logo" text-align="center">
+        <img src="{% static 'images/icon/logo_principal.png' %}">
+    </div>
+    
+{% endblock content %}
